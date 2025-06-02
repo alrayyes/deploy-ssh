@@ -4,3 +4,5 @@ RUN apk --no-cache add openssh-client=10.0_p1-r7 && \
   mkdir -p /root/.ssh
 
 COPY config /root/.ssh/config
+
+RUN chmod 600 /root/.ssh/config
