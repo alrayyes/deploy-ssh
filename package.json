@@ -1,0 +1,33 @@
+{
+	"name": "deploy-ssh",
+	"private": true,
+	"description": "Alpine image used for deployment",
+	"version": "1.0.0",
+	"author": "Ryan Kes <511318+alrayyes@users.noreply.github.com>",
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@commitlint/cli": "19.8.1",
+		"@commitlint/config-conventional": "19.8.1",
+		"@release-it/conventional-changelog": "10.0.1",
+		"commitizen": "4.3.1",
+		"cz-conventional-changelog": "3.3.0",
+		"lefthook": "1.11.13",
+		"release-it": "19.0.3"
+	},
+	"scripts": {
+		"commit": "cz",
+		"release": "release-it",
+		"lint": "biome check",
+		"lint:fix": "biome check --write"
+	},
+	"repository": "https://github.com/alrayyes/deploy-ssh",
+	"bugs": {
+		"url": "https://github.com/alrayyes/deploy-ssh/issues"
+	},
+	"license": "UNLICENSED",
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	}
+}
