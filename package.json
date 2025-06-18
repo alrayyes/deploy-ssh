@@ -2,7 +2,7 @@
 	"name": "deploy-ssh",
 	"private": true,
 	"description": "Alpine image used for deployment",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"author": "Ryan Kes <511318+alrayyes@users.noreply.github.com>",
 	"devDependencies": {
 		"@biomejs/biome": "2.0.0",
