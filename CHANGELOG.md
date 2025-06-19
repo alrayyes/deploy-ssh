@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.1 (2025-06-19)
+
+### Bug Fixes
+
+* **ci:** manually set tag to 1.2.0 so next tag is properly generated
+* **ci:** manually set tag to 1.2.8 so next tag is properly generated
+* **ci:** try to fix the tag already exists error
+
 ## 1.2.0 (2025-06-19)
 
 ### Features
