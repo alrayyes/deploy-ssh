@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.2.0 (2025-06-19)
+
+### Features
+
+* install git
+* make git available
+* remove git again
+
+### Bug Fixes
+
+* **ci:** set proper config to run container entry point
+* **ci:** set proper entrypoint
+* **ci:** set proper hash url
+
 ## 1.1.1 (2025-06-18)
 
 ## 1.1.0 (2025-06-18)
