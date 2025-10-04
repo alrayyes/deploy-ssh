@@ -15,6 +15,10 @@ pre-push:
 pre-commit:
   parallel: true
   jobs:
-    - run: pnpm lint
+    - run: pnpm lint:fix .
+      glob: "*"
+      stage_fixed: true
     - run: docker compose run --rm -T hadolint hadolint Dockerfile
+      glob: "Dockerfile"
     - run: docker build .
+      glob: "Dockerfile"
