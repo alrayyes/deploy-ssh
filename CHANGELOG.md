@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.87 (2025-10-05)
+
+### Bug Fixes
+
+* set existing ssh client package
+* set proper package name for ssh client
+* set proper pre-commit globs
+
 ## 1.2.86 (2025-09-23)
 
 ## 1.2.85 (2025-09-23)
