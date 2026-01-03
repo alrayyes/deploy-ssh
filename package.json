@@ -5,7 +5,7 @@
 	"version": "1.2.87",
 	"author": "Ryan Kes <511318+alrayyes@users.noreply.github.com>",
 	"devDependencies": {
-		"@biomejs/biome": "2.3.10",
+		"@biomejs/biome": "2.3.11",
 		"@commitlint/cli": "20.3.0",
 		"@commitlint/config-conventional": "20.3.0",
 		"lefthook": "2.0.13"
