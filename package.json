@@ -6,8 +6,8 @@
 	"author": "Ryan Kes <511318+alrayyes@users.noreply.github.com>",
 	"devDependencies": {
 		"@biomejs/biome": "2.4.12",
-		"@commitlint/cli": "20.5.0",
-		"@commitlint/config-conventional": "20.5.0",
+		"@commitlint/cli": "20.5.3",
+		"@commitlint/config-conventional": "20.5.3",
 		"lefthook": "2.1.6"
 	},
 	"scripts": {
