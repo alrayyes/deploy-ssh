@@ -19,5 +19,5 @@
 	"bugs": {
 		"url": "https://github.com/alrayyes/deploy-ssh/issues"
 	},
-	"license": "UNLICENSED"
+	"license": "GPL-3.0-or-later"
 }
