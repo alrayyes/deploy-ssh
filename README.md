@@ -8,14 +8,14 @@
 An Alpine image carrying what a deploy job needs, so the job stops installing it
 on every run.
 
-```
+```text
 ghcr.io/alrayyes/deploy-ssh:latest
 ```
 
-It exists because the alternative is an `apk add` at the top of every deploy: six
-packages, fetched from the Alpine mirrors, every time anything ships. That is a
-minute of somebody's pipeline and a dependency on a mirror being up, paid over
-and over for an answer that never changes.
+It exists because the alternative is running `apk add` at the top of every
+deploy: six packages, fetched from the Alpine mirrors, every time anything
+ships. That is a minute of somebody's pipeline and a dependency on a mirror
+being up, paid over and over for an answer that never changes.
 
 ## Requirements
 
@@ -26,13 +26,13 @@ The image is `linux/amd64` only.
 
 ## What's in it
 
-| | Why |
-| --- | --- |
-| `openssh-client-default` | `ssh` and `scp` — the thing the image is named after |
-| `bash` | deploy scripts that use arrays need a real bash, not Alpine's `ash` |
-| `git`, `ca-certificates` | so `actions/checkout` clones over HTTPS with the system CA store instead of pulling a tarball through node |
-| `nodejs` | `actions/checkout` **is** a node program whichever way it fetches. Without it the step never starts: `exec: "node": executable file not found`, exit 127 |
-| `python3` | for the deploy script that parses JSON on its way to finding a host |
+| Package                  | Why                                                                                                                                                      |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `openssh-client-default` | `ssh` and `scp` — the thing the image is named after                                                                                                     |
+| `bash`                   | deploy scripts that use arrays need a real bash, not Alpine's `ash`                                                                                      |
+| `git`, `ca-certificates` | so `actions/checkout` clones over HTTPS with the system CA store instead of pulling a tarball through node                                               |
+| `nodejs`                 | `actions/checkout` **is** a node program whichever way it fetches. Without it the step never starts: `exec: "node": executable file not found`, exit 127 |
+| `python3`                | for the deploy script that parses JSON on its way to finding a host                                                                                      |
 
 That is the whole image. It has no entrypoint of its own and runs nothing — it is
 somewhere for a CI job to stand.
@@ -41,13 +41,13 @@ somewhere for a CI job to stand.
 
 It ships one file, `/root/.ssh/config`:
 
-```
+```text
 StrictHostKeyChecking accept-new
 ```
 
 `accept-new` is the honest setting for a container rebuilt on every job. A
 `known_hosts` file would be re-learned each run, so a pinned host key buys
-nothing, while `accept-new` still refuses a key that *changes* mid-run. A job
+nothing, while `accept-new` still refuses a key that _changes_ mid-run. A job
 wanting something stricter writes its own config over it.
 
 There is nothing else to configure. No environment variables, no flags.
@@ -74,7 +74,7 @@ this image is meant to stop.
 
 Verify where an image came from:
 
-```
+```sh
 gh attestation verify oci://ghcr.io/alrayyes/deploy-ssh:latest --repo alrayyes/deploy-ssh
 ```
 

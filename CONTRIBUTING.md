@@ -10,7 +10,7 @@ That is the whole toolchain. Everything else arrives through `bun install`.
 
 ## Getting set up
 
-```
+```sh
 bun install
 ```
 
@@ -22,27 +22,47 @@ what stops CI being the place you find things out.
 
 Run what the pipeline runs:
 
+```sh
+bun run lint            # biome: JSON, and anything else it supports
+bun run format:check    # prettier: Markdown and YAML layout
+bun run lint:md         # markdownlint: structure, links, heading levels
+bun run lint:mechanics  # ltex: grammar and spelling
+bun run lint:prose      # vale: house style
+
+docker compose run --rm -T hadolint hadolint Dockerfile
+docker build .
 ```
-bun run lint                                              # biome
-docker compose run --rm -T hadolint hadolint Dockerfile   # Dockerfile
-docker build .                                            # it still builds
-```
+
+Prose is linted in tiers because they answer to different things. Layout is
+Prettier's, structure is markdownlint's, mechanics have a right answer, and
+style is advice. Mechanics fails the build; style reports and does not, because
+style advice that blocks a merge teaches people to skip the hooks.
+
+`bun run format` and `bun run lint:fix` are the writing versions of the first
+two.
 
 The hooks run the same commands, which is the point — they cannot drift from CI
 if there is one copy of each:
 
-- **pre-commit** formats staged files with biome and restages what it touched,
-  then runs hadolint and a build if you touched the `Dockerfile`. It may write.
+- **pre-commit** formats staged files with biome and Prettier and restages what
+  they touched, then runs markdownlint, and hadolint and a build if you touched
+  the `Dockerfile`. It may write.
 - **commit-msg** runs commitlint.
-- **pre-push** runs all three in check mode over the whole tree. It never
-  writes: a hook rewriting files under a push leaves the pushed commit and your
-  working tree disagreeing about what was reviewed.
+- **pre-push** runs everything in check mode over the whole tree, including the
+  two prose tiers. It never writes: a hook rewriting files under a push leaves
+  the pushed commit and your working tree disagreeing about what was reviewed.
+
+The first `bun run lint:mechanics` downloads ltex-ls-plus, which is about
+300 MB because it ships its own JVM. It caches outside the repository under
+`$XDG_CACHE_HOME`, so that is once per machine and a few seconds thereafter.
+Vale fetches its style packages into `styles/` on first run; both of those
+directories are gitignored.
 
 CI adds one check the hooks cannot: it runs the built image and asserts that
 `bash`, `git`, `node`, `python3`, `ssh` and `scp` all resolve and that `ssh -G`
 reports `accept-new`. If Alpine renames or drops a package, `apk add` still
 succeeds for the rest and the build stays green — the failure would otherwise
-turn up in somebody's deploy.
+turn up in a deploy somewhere else.
 
 ## Commits
 

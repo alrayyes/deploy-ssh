@@ -36,7 +36,7 @@ Worth knowing before you go looking, because these are deliberate:
 - **`StrictHostKeyChecking accept-new` is the shipped default.** It trusts the
   first host key it sees. That is a real trade: it stops a rebuilt container
   prompting on a key it has no way to have learned, and it still refuses a key
-  that *changes* mid-run. If your threat model includes the first connection,
+  that _changes_ mid-run. If your threat model includes the first connection,
   write your own `~/.ssh/config` over it and ship a `known_hosts`.
 - **Alpine package versions are not pinned.** The base image digest is, and it
   is what a rebuild reproduces; the packages come from the Alpine branch that
@@ -49,7 +49,7 @@ Worth knowing before you go looking, because these are deliberate:
 
 Every release is attested:
 
-```
+```sh
 gh attestation verify oci://ghcr.io/alrayyes/deploy-ssh:latest --repo alrayyes/deploy-ssh
 ```
 
