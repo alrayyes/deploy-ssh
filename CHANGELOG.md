@@ -1,27 +1,5 @@
 # Changelog
 
-## [1.3.0](https://github.com/alrayyes/deploy-ssh/compare/deploy-ssh-1.2.87...deploy-ssh-1.3.0) (2026-08-14)
-
-
-### Features
-
-* carry the six packages a deploy job needs ([a018348](https://github.com/alrayyes/deploy-ssh/commit/a0183483b37178ca73830cafac2434535f771c91))
-* carry the six packages a deploy job needs ([2760c47](https://github.com/alrayyes/deploy-ssh/commit/2760c4769be12d3ce5aeb3979f0d191c005d3e22))
-* implement continuous releases ([73b20fb](https://github.com/alrayyes/deploy-ssh/commit/73b20fb217355b3a7b1f17bee0218c8e21838183))
-* install git ([1d7805c](https://github.com/alrayyes/deploy-ssh/commit/1d7805cd2f4a036b5be6f4966a152921dbfe2991))
-* make git available ([f90f5d9](https://github.com/alrayyes/deploy-ssh/commit/f90f5d930b5864a834b8f3c16d9f4924644b0f93))
-* remove git again ([9f43d27](https://github.com/alrayyes/deploy-ssh/commit/9f43d2743436e4877919069a1b958eed36ae8ac6))
-
-
-### Bug Fixes
-
-* **ci:** manually set tag to 1.2.0 so next tag is properly generated ([4e222c8](https://github.com/alrayyes/deploy-ssh/commit/4e222c889b61137e9da56c35013c0caa036e786f))
-* **ci:** manually set tag to 1.2.8 so next tag is properly generated ([93908f0](https://github.com/alrayyes/deploy-ssh/commit/93908f0bee5c27bc146ba8d01093721e917958c0))
-* **ci:** try to fix the tag already exists error ([b523b32](https://github.com/alrayyes/deploy-ssh/commit/b523b3272d151416c1a14ec104b434f9296210f8))
-* set existing ssh client package ([895f06b](https://github.com/alrayyes/deploy-ssh/commit/895f06ba9c558cc3a1d6132f188fef61e42fdf2a))
-* set proper package name for ssh client ([9174470](https://github.com/alrayyes/deploy-ssh/commit/9174470a2c26cb1c0b83795e5922be6165ef10a1))
-* set proper pre-commit globs ([4b0f27a](https://github.com/alrayyes/deploy-ssh/commit/4b0f27a41b938df3e11ea8d83e26d6a80ad7c442))
-
 ## 1.2.87 (2025-10-05)
 
 ### Bug Fixes
