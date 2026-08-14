@@ -107,6 +107,23 @@ Label it: a `kind/` for what it is and a `topic/` for the area it touches.
 
 Spend the description on **why**. The diff already says what.
 
+**Pull requests are squash merged**, and it is the only method this repository
+allows. That is release-please's documented workflow: one pull request becomes
+one commit on `main`, and the changelog entry is that commit.
+
+Merge commits were the alternative and they doubled every changelog entry.
+GitHub builds the body of a merge commit from the pull request title, so a
+branch carrying its own `fix(ci): ...` commit and the merge commit landing it on
+`main` both parse as conventional commits, and release-please counted them
+twice. No setting
+avoids it — GitHub permits only three title/body combinations for merge
+commits, and each leaves the conventional subject somewhere release-please
+reads.
+
+The cost is that a branch built as a readable sequence of commits collapses to
+one, so **the pull request title and body become the commit message**. Write
+them accordingly.
+
 ## Releasing
 
 You do not. release-please keeps a release pull request open against `main`
