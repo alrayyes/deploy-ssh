@@ -70,3 +70,17 @@ jobs:
       # --pull so a base image already on the runner cannot make a broken FROM line
       # look fine. Build only - the tag dies with the runner.
       - run: docker build --pull -t deploy-ssh:ci .
+
+      # The image exists to carry these. If Alpine renames a package or drops one
+      # from the branch, `apk add` still succeeds for the rest and the build stays
+      # green - the failure surfaces in someone else's deploy instead. So assert it
+      # here, where it is this repo's problem.
+      - name: Check the image carries what a deploy job needs
+        run: |
+          docker run --rm deploy-ssh:ci sh -c '
+            set -eu
+            for c in bash git node python3 ssh scp; do
+              command -v "$c" >/dev/null || { echo "missing: $c"; exit 1; }
+            done
+            ssh -G example.invalid | grep -qx "stricthostkeychecking accept-new"
+          '

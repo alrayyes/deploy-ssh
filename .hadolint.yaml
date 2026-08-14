@@ -5,7 +5,12 @@
 # and prunes the rest, so nothing can bump the pin in step.
 #
 # The cost of disabling it here rather than inline is that a future `apk add`
-# gets the same pass without arguing for it. Re-read the reasoning above before
-# adding a second package.
+# gets the same pass without arguing for it. That has now happened once: the
+# image went from one package to six when it took over vps-docker's per-run
+# install. The reasoning above held — it is a property of Alpine, not of how
+# many packages are on the line — but it is the kind of thing that gets
+# stretched quietly. Read it again before reaching for a seventh, and if the
+# argument no longer fits, move the ignore inline on the line that needs it
+# rather than widening this one.
 ignored:
   - DL3018
