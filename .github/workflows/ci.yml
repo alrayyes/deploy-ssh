@@ -1,0 +1,72 @@
+# What a pull request has to survive. Nothing here publishes; that is release.yml's
+# job, and keeping the two apart is why a branch can never put a tag in the registry.
+#
+# The Forgejo pipeline this replaces had to `apk add nodejs` before every checkout,
+# because it ran each job inside a bare tool image. GitHub's runners already carry
+# node, git and docker, so a job here is the tool and nothing else.
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# A second push to the same branch makes the first run's answer worthless.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: .bun-version
+      # --frozen-lockfile so a drifted bun.lock fails the job rather than quietly
+      # resolving something else. Deliberately uncached: a cold install is seconds,
+      # and taring the cache to save them costs more than it saves.
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+
+  commits:
+    # release-please reads Conventional Commits to decide the next version and write
+    # the changelog. A commit that does not parse does not get a worse release note -
+    # it gets none, and the version does not move. So this is part of releasing
+    # rather than a style preference.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Both endpoints have to be in the clone for commitlint to walk between
+          # them, and the default shallow fetch has neither.
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: .bun-version
+      # A real install, not bare bunx: commitlint resolves
+      # @commitlint/config-conventional as a sibling package.
+      - run: bun install --frozen-lockfile
+      - run: bunx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+
+  dockerfile:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: hadolint/hadolint-action@2a66e89f53d0771bb131a7fa31f3136336094aa6 # v3.4.0
+        with:
+          dockerfile: Dockerfile
+          config: .hadolint.yaml
+
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # --pull so a base image already on the runner cannot make a broken FROM line
+      # look fine. Build only - the tag dies with the runner.
+      - run: docker build --pull -t deploy-ssh:ci .
