@@ -5,3 +5,10 @@ node_modules/
 # a contributor's global ignore file - this repo carried a stray .idea/ from a
 # different project for months, invisible to anyone whose global config hid it.
 .idea/
+
+# Vale downloads these; only styles/House/ and the vocabulary are ours.
+styles/Google/
+styles/proselint/
+
+# Where CI puts bun's cache. GitHub can only cache paths inside the project.
+.bun-cache/

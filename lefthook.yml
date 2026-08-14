@@ -5,19 +5,42 @@ commit-msg:
     "lint commit message":
       run: bunx commitlint --edit {1}
 
+# Never writes. A hook rewriting files under a push leaves the pushed commit and
+# the working tree disagreeing about what was reviewed.
+#
+# Vale and LTeX are here rather than in pre-commit: LTeX ships its own JVM and
+# is a ~300 MB download the first time, and Vale wants its style packages
+# fetched. After that a run over this repo's five documents is seconds, which is
+# cheap for something paid once a branch and far cheaper than finding a
+# misspelt product name from a red pipeline.
 pre-push:
   parallel: true
   jobs:
     - run: bun run lint
+    - run: bun run format:check
+    - run: bun run lint:md
+    - run: bun run lint:mechanics
+    - run: bun run lint:prose
     - run: docker compose run --rm -T hadolint hadolint Dockerfile
     - run: docker build .
 
+# May write. A commit should not fail over a quote style or a table alignment a
+# tool can settle by itself, so every fixer runs and what it touched is restaged.
+#
+# Prettier runs before markdownlint, never after: Prettier decides the layout
+# and markdownlint judges what Prettier produced. The other order has
+# markdownlint fixing something Prettier is about to overwrite.
 pre-commit:
-  parallel: true
+  parallel: false
   jobs:
     - run: bun run lint:fix .
       glob: "*"
       stage_fixed: true
+    - run: bun run format
+      glob: "*.{md,yml,yaml}"
+      stage_fixed: true
+    - run: bun run lint:md
+      glob: "*.md"
     - run: docker compose run --rm -T hadolint hadolint Dockerfile
       glob: "Dockerfile"
     - run: docker build .
