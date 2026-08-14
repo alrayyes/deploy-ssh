@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.0](https://github.com/alrayyes/deploy-ssh/compare/1.2.87...1.3.0) (2026-08-14)
+
+
+### Features
+
+* carry the six packages a deploy job needs ([a018348](https://github.com/alrayyes/deploy-ssh/commit/a0183483b37178ca73830cafac2434535f771c91))
+* carry the six packages a deploy job needs ([2760c47](https://github.com/alrayyes/deploy-ssh/commit/2760c4769be12d3ce5aeb3979f0d191c005d3e22))
+
+
+### Bug Fixes
+
+* **ci:** tag releases bare, not prefixed with the component ([b4ef5a4](https://github.com/alrayyes/deploy-ssh/commit/b4ef5a404d830bcc50fb676b07996c84b2e95777))
+* **ci:** tag releases bare, not prefixed with the component ([ff30248](https://github.com/alrayyes/deploy-ssh/commit/ff302481c1786c57b96ab9ebb46b10b955f89b59))
+
 ## 1.2.87 (2025-10-05)
 
 ### Bug Fixes
