@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1](https://github.com/alrayyes/deploy-ssh/compare/1.3.0...1.3.1) (2026-08-14)
+
+
+### Bug Fixes
+
+* **ci:** release image bumps so a new base image reaches ghcr ([b449184](https://github.com/alrayyes/deploy-ssh/commit/b449184824017a43fced37da276fce692c7414ee))
+* **ci:** release image bumps so a new base image reaches ghcr ([76f4ce7](https://github.com/alrayyes/deploy-ssh/commit/76f4ce7259872b945a5769144e3abc5d6f4ff752))
+
 ## [1.3.0](https://github.com/alrayyes/deploy-ssh/compare/1.2.87...1.3.0) (2026-08-14)
 
 
