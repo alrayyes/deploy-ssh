@@ -89,10 +89,11 @@ them:
   is disabled in `.hadolint.yaml` to allow it. An apk version belongs to the
   Alpine branch the base image is built on rather than to this file, and Alpine
   keeps one build per branch and prunes the rest — so there is no version list
-  for Renovate to read and no archive to pin against. Read that file in full
-  before adding a seventh package.
+  to read and no archive to pin against. Read that file in full before adding
+  a seventh package.
 - **The base image digest is pinned**, and that is the part that is genuinely
-  reproducible. Renovate moves it.
+  reproducible. It moves only when someone bumps it by hand and opens a pull
+  request.
 
 Adding a package makes the image bigger for everyone pulling it, so it wants an
 argument in the commit message, not just a line in the `RUN`.

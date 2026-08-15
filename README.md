@@ -67,10 +67,10 @@ jobs:
       - run: ./deploy.sh "$DEPLOY_HOST"
 ```
 
-Pin the version **and** the digest. The version is what makes a Renovate pull
-request readable; the digest is what actually runs. `latest` on its own is a
-floating reference, and a deploy that silently changes what it runs is the thing
-this image is meant to stop.
+Pin the version **and** the digest. The version is what makes a bump readable in
+review; the digest is what actually runs. `latest` on its own is a floating
+reference, and a deploy that silently changes what it runs is the thing this
+image is meant to stop.
 
 Verify where an image came from:
 
