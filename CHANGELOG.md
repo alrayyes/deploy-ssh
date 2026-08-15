@@ -19,6 +19,10 @@
 
 * **ci:** tag releases bare, not prefixed with the component ([ff30248](https://github.com/alrayyes/deploy-ssh/commit/ff302481c1786c57b96ab9ebb46b10b955f89b59))
 
+Entries below this line came from the GitLab and Forgejo history before this
+repo moved to GitHub. They predate release-please's dedup, carry no commit
+links, and are kept as released rather than rewritten.
+
 ## 1.2.87 (2025-10-05)
 
 ### Bug Fixes
