@@ -17,6 +17,7 @@ pre-push:
   parallel: true
   jobs:
     - run: bun run lint
+    - run: bun run audit
     - run: bun run format:check
     - run: bun run lint:md
     - run: bun run lint:mechanics

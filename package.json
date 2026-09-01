@@ -20,6 +20,7 @@
 		"lint:md": "markdownlint-cli2",
 		"lint:prose": "./scripts/lint-prose.sh",
 		"lint:mechanics": "./scripts/lint-mechanics.sh",
+		"audit": "bun audit",
 		"prepare": "lefthook install"
 	},
 	"repository": "https://github.com/alrayyes/deploy-ssh",
