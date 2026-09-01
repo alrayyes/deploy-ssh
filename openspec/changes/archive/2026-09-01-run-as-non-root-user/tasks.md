@@ -32,6 +32,6 @@
       (`tailscale/ts-authkey-default.env` missing on the server) reproduced
       identically with Ryan's own native SSH right after - a pre-existing
       gap in server state, unrelated to this change.
-- [ ] 3.3 Real review before merge, per issue #31's definition of done -
-      not a self-merge. Ryan green-lit proceeding to review via the
-      `vps-docker` session; PR marked ready for review.
+- [x] 3.3 Real review before merge, per issue #31's definition of done -
+      not a self-merge. Ryan reviewed and merged PR #46 himself
+      (`cd96dfa`), closing #31.
