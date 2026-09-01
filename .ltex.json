@@ -24,6 +24,7 @@
 			"ltex-cli-plus",
 			"ltex-ls-plus",
 			"markdownlint",
+			"OpenSpec",
 			"pre-commit",
 			"pre-push",
 			"proselint",

@@ -23,9 +23,14 @@ if [ ! -d styles/Google ] || [ ! -d styles/proselint ]; then
 fi
 
 # The prose this repository wrote. A bare `vale .` also reads the Contributor
-# Covenant, the generated changelog and the README of every downloaded style
-# package, and holds all of them to house rules they were never written to.
-files=$(git ls-files '*.md' | grep -v '^CODE_OF_CONDUCT.md$' | grep -v '^CHANGELOG.md$')
+# Covenant, the generated changelog, the README of every downloaded style
+# package, and OpenSpec's own generated and template-format files, and holds
+# all of them to house rules they were never written to.
+files=$(git ls-files '*.md' |
+  grep -v '^CODE_OF_CONDUCT.md$' |
+  grep -v '^CHANGELOG.md$' |
+  grep -v '^\.claude/' |
+  grep -v '^openspec/')
 
 echo "Checking:"
 echo "$files"

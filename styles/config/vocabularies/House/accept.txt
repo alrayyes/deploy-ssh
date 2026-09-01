@@ -21,6 +21,7 @@ commitlint
 hadolint
 lefthook
 markdownlint
+OpenSpec
 [Ss]corecard
 
 # Ordinary words the spell checker does not carry. Each one is here because it
