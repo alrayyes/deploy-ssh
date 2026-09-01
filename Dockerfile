@@ -33,8 +33,21 @@ RUN apk --no-cache add \
         nodejs \
         openssh-client-default \
         python3 && \
-    mkdir -p /root/.ssh
+    addgroup -g 1000 deploy && \
+    adduser -D -u 1000 -G deploy -h /home/deploy deploy && \
+    mkdir -p /home/deploy/.ssh && \
+    chown -R deploy:deploy /home/deploy/.ssh && \
+    chmod 700 /home/deploy/.ssh
 
-COPY config /root/.ssh/config
+COPY --chown=deploy:deploy config /home/deploy/.ssh/config
 
-RUN chmod 600 /root/.ssh/config
+RUN chmod 600 /home/deploy/.ssh/config
+
+# HOME is set explicitly rather than left to whatever adduser wrote to
+# /etc/passwd: Docker doesn't export it as an environment variable just
+# because USER points at an entry with a home directory, and a shell that
+# isn't a login shell won't resolve it from passwd either - the deploy job's
+# own `~` expansion for its SSH key and config needs $HOME to actually be
+# set, not just resolvable.
+ENV HOME=/home/deploy
+USER 1000:1000
