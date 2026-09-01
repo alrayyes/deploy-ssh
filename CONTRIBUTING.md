@@ -24,6 +24,7 @@ Run what the pipeline runs:
 
 ```sh
 bun run lint            # biome: JSON, and anything else it supports
+bun run audit           # bun audit: known vulnerabilities in pinned deps
 bun run format:check    # prettier: Markdown and YAML layout
 bun run lint:md         # markdownlint: structure, links, heading levels
 bun run lint:mechanics  # ltex: grammar and spelling
