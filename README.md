@@ -39,7 +39,8 @@ somewhere for a CI job to stand.
 
 ## Configuration
 
-It ships one file, `/root/.ssh/config`:
+It runs as a non-root user (`1000:1000`) and ships one file,
+`/home/deploy/.ssh/config`:
 
 ```text
 StrictHostKeyChecking accept-new

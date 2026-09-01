@@ -29,10 +29,11 @@ something moves it.
 
 Worth knowing before you go looking, because these are deliberate:
 
-- **It runs as root.** Job containers are given a `~/.ssh` to write into and a
-  workspace mounted by the runner, and a non-root user makes both somebody
-  else's problem to configure. This is a CI image, not a service: nothing in it
-  listens, and it runs only what the job tells it to.
+- **It runs as UID 1000, not root.** `$HOME` is `/home/deploy`, and the
+  shipped SSH config lives at `/home/deploy/.ssh/config`. A process that
+  starts non-root begins with zero Linux capabilities, so privilege
+  escalation inside the container needs a kernel bug even before anything
+  drops capabilities at runtime.
 - **`StrictHostKeyChecking accept-new` is the shipped default.** It trusts the
   first host key it sees. That is a real trade: it stops a rebuilt container
   prompting on a key it has no way to have learned, and it still refuses a key
