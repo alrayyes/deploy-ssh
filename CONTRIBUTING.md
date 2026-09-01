@@ -98,6 +98,22 @@ them:
 Adding a package makes the image bigger for everyone pulling it, so it wants an
 argument in the commit message, not just a line in the `RUN`.
 
+## Tracking a change
+
+A non-trivial change carries two records, side by side: a GitHub issue for
+why it matters, and an OpenSpec change under `openspec/changes/` for
+_what the system must do_ — a proposal, a spec delta where behaviour
+actually changes, and a task list. Neither replaces the other. Create one
+with `openspec new change <name>`, or ask your assistant to propose one;
+`openspec archive <name>` folds a finished change's spec deltas into
+`openspec/specs/` once it ships. A pure tooling, config or docs change with
+no observable behaviour change sets `skip_specs: true` in the change's
+`.openspec.yaml` rather than inventing a spec for it.
+
+`openspec/` and `.claude/` (OpenSpec's own generated skills and commands)
+are excluded from this repo's Markdown linting: they follow OpenSpec's own
+template contract, not this repo's house style.
+
 ## Opening a pull request
 
 Branch, push, open a pull request — nothing lands on `main` directly. Read your
