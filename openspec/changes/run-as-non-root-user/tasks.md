@@ -22,10 +22,16 @@
       workflow has no hard dependency on root or `/root/.ssh` (confirmed -
       it already writes to `~/.ssh/...`, and flagged that `$HOME` has to
       be set explicitly for the new user)
-- [ ] 3.2 Push a candidate image, hand `vps-docker` the tag/digest, and get
-      a real `workflow_dispatch` run against it confirming SSH auth and a
-      completed deploy - the one thing that can't be verified by reading
-      YAML (whether the runner's job workspace is writable by a non-root
-      UID)
+- [x] 3.2 `vps-docker` pushed the candidate (built from `fix/non-root-user`
+      @ `a68da18`) as a temporary `ghcr.io/alrayyes/deploy-ssh:test-non-root`
+      tag and ran it through a real `workflow_dispatch` against
+      `deploy.yml`, pinned by digest. Confirmed clean: SSH connection
+      opened, host key accepted (`accept-new`), headscale tailnet lookup
+      succeeded, all 25 deploy targets staged, zero permission errors under
+      UID 1000/GID 1000 with `HOME=/home/deploy`. The run's one failure
+      (`tailscale/ts-authkey-default.env` missing on the server) reproduced
+      identically with Ryan's own native SSH right after - a pre-existing
+      gap in server state, unrelated to this change.
 - [ ] 3.3 Real review before merge, per issue #31's definition of done -
-      not a self-merge
+      not a self-merge. Ryan green-lit proceeding to review via the
+      `vps-docker` session; PR marked ready for review.
