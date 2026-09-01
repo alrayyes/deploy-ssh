@@ -30,7 +30,15 @@ ignores:
   - "openspec/**"
 
 config:
-  MD013:
+  # Rules markdownlint ships and maintains alongside Prettier itself, so
+  # heading style, blanks around headings/lists, fence style, trailing
+  # spaces and the rest don't second-guess a layout decision Prettier
+  # already made. Re-enabling line-length below has to use the alias,
+  # never a raw MD013: key - extends merges on the literal key, so a
+  # stray MD013: block would sit beside the inherited line-length: false
+  # and lose silently.
+  extends: "markdownlint/style/prettier"
+  line-length:
     # Prose stays at 80 so the diff of a reworded paragraph is the paragraph.
     line_length: 80
     # Tables and code blocks are exempt: a pinned image digest and a table row
