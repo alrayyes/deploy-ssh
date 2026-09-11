@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.3](https://github.com/alrayyes/deploy-ssh/compare/1.3.2...1.3.3) (2026-09-11)
+
+
+### Bug Fixes
+
+* **ci:** merge Dependabot auto-merge with RELEASE_TOKEN ([#56](https://github.com/alrayyes/deploy-ssh/issues/56)) ([f7e0721](https://github.com/alrayyes/deploy-ssh/commit/f7e07217f4b0efc10ce5e0704ab25606dcc06026))
+* **deps:** override smol-toml, bump js-yaml for audit advisories ([#55](https://github.com/alrayyes/deploy-ssh/issues/55)) ([29bca33](https://github.com/alrayyes/deploy-ssh/commit/29bca330d05881225f3b7770c9f5824ca85a801f))
+
 ## [1.3.2](https://github.com/alrayyes/deploy-ssh/compare/1.3.1...1.3.2) (2026-09-01)
 
 
