@@ -33,6 +33,7 @@ jobs:
       # and taring the cache to save them costs more than it saves.
       - run: bun install --frozen-lockfile
       - run: bun run lint
+      - run: bun run lint:pkg
 
   # Pinning stops a version drifting under you; it says nothing about the
   # pinned version having a since-published CVE. Separate from lint so a red
