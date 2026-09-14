@@ -23,13 +23,14 @@ what stops CI being the place you find things out.
 Run what the pipeline runs:
 
 ```sh
-bun run lint            # biome: JSON, and anything else it supports
-bun run lint:pkg        # sort-package-json: canonical key order
-bun run audit           # bun audit: known vulnerabilities in pinned deps
-bun run format:check    # prettier: Markdown and YAML layout
-bun run lint:md         # markdownlint: structure, links, heading levels
-bun run lint:mechanics  # ltex: grammar and spelling
-bun run lint:prose      # vale: house style
+bun run lint                # biome: JSON, and anything else it supports
+bun run lint:pkg            # sort-package-json: canonical key order
+bun run check:biome-schema  # biome.json's $schema vs. the pinned @biomejs/biome
+bun run audit               # bun audit: known vulnerabilities in pinned deps
+bun run format:check        # prettier: Markdown and YAML layout
+bun run lint:md             # markdownlint: structure, links, heading levels
+bun run lint:mechanics      # ltex: grammar and spelling
+bun run lint:prose          # vale: house style
 
 docker run --rm -i -v "$PWD/.hadolint.yaml:/.hadolint.yaml:ro" hadolint/hadolint:v2.15.1-alpine@sha256:a1d49ae1a4e83c1dbad26b8c1ad7588c8bd1e04f4866b34ad3cac50335198552 hadolint --config /.hadolint.yaml - < Dockerfile
 docker build .
