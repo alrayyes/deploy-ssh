@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/alrayyes/deploy-ssh/compare/1.3.3...1.3.4) (2026-09-14)
+
+
+### Bug Fixes
+
+* **ci:** use pull_request_target for dependabot auto-merge ([#59](https://github.com/alrayyes/deploy-ssh/issues/59)) ([4ba7cc3](https://github.com/alrayyes/deploy-ssh/commit/4ba7cc374f1d30c9bba09be674e848fb9dd4810a))
+
 ## [1.3.3](https://github.com/alrayyes/deploy-ssh/compare/1.3.2...1.3.3) (2026-09-11)
 
 
