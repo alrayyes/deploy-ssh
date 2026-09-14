@@ -30,7 +30,7 @@ bun run lint:md         # markdownlint: structure, links, heading levels
 bun run lint:mechanics  # ltex: grammar and spelling
 bun run lint:prose      # vale: house style
 
-docker compose run --rm -T hadolint hadolint Dockerfile
+docker run --rm -i -v "$PWD/.hadolint.yaml:/.hadolint.yaml:ro" hadolint/hadolint:v2.15.1-alpine@sha256:a1d49ae1a4e83c1dbad26b8c1ad7588c8bd1e04f4866b34ad3cac50335198552 hadolint --config /.hadolint.yaml - < Dockerfile
 docker build .
 ```
 
