@@ -14,3 +14,8 @@ trim_trailing_whitespace = false
 
 [*.{yml,yaml}]
 indent_size = 2
+
+# Matches biome.json's formatter.indentStyle: Biome reads this file
+# (useEditorconfig) instead of the value being set twice.
+[*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,json,jsonc,css,graphql,gql}]
+indent_style = tab
