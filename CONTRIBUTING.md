@@ -24,6 +24,7 @@ Run what the pipeline runs:
 
 ```sh
 bun run lint            # biome: JSON, and anything else it supports
+bun run lint:pkg        # sort-package-json: canonical key order
 bun run audit           # bun audit: known vulnerabilities in pinned deps
 bun run format:check    # prettier: Markdown and YAML layout
 bun run lint:md         # markdownlint: structure, links, heading levels
@@ -39,8 +40,8 @@ Prettier's, structure is markdownlint's, mechanics have a right answer, and
 style is advice. Mechanics fails the build; style reports and does not, because
 style advice that blocks a merge teaches people to skip the hooks.
 
-`bun run format` and `bun run lint:fix` are the writing versions of the first
-two.
+`bun run format`, `bun run lint:fix` and `bun run lint:pkg:fix` are the
+writing versions of `format:check`, `lint` and `lint:pkg`.
 
 The hooks run the same commands, which is the point — they cannot drift from CI
 if there is one copy of each:

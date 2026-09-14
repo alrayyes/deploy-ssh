@@ -4,7 +4,7 @@
 
 ## Test plan
 
-- [ ] `bun run lint` / `lint:md` / `format:check` / `lint:mechanics` /
-      `lint:prose` all pass
+- [ ] `bun run lint` / `lint:pkg` / `lint:md` / `format:check` /
+      `lint:mechanics` / `lint:prose` all pass
 - [ ] `docker build .` and hadolint pass
 - [ ] CI green
