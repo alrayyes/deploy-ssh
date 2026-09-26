@@ -2,7 +2,7 @@ FROM alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6ee
 
 # What a deploy job needs, in the image rather than installed on every run.
 #
-# The six below are exactly what vps-docker's deploy job used to `apk add` into a
+# The six below are exactly what a real deploy job used to `apk add` into a
 # bare alpine on every deploy, and each one is here for a reason that bites when it
 # is missing:
 #
