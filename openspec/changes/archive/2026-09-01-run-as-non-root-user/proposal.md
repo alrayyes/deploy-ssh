@@ -6,11 +6,11 @@ escalation needs a kernel bug even before anything drops capabilities at
 runtime." `deploy-ssh`'s image has no `USER` directive and runs as root,
 tracked as https://github.com/alrayyes/deploy-ssh/issues/31. It wasn't
 fixed directly because the image writes `~/.ssh/config` and is consumed by
-`vps-docker`'s deploy pipeline, which needed verifying against the real
+the deployment repo that consumes this image, which needed verifying against the real
 change before it landed - not just a Dockerfile edit that happens to
 build.
 
-Coordinated directly with the `vps-docker` session: its deploy workflow
+Coordinated directly with the the consuming deployment's own session: its deploy workflow
 already writes the SSH key and config to `~/.ssh/...` rather than
 `/root/.ssh/...` (a deliberate defensive choice, per a comment already in
 that workflow), doesn't otherwise depend on UID 0, and needs `$HOME` set
@@ -42,10 +42,10 @@ None.
 ## Impact
 
 - `Dockerfile`, `README.md`, `SECURITY.md`.
-- `vps-docker`'s deploy workflow is unaffected by design (it already
+- the consuming deployment's own workflow is unaffected by design (it already
   writes to `~/.ssh/...`, not a hardcoded `/root/.ssh/...`), but still
   needs a real `workflow_dispatch` run against a candidate image to
   confirm the runner's job workspace is writable by a non-root UID - the
   one thing that can't be verified by reading the workflow YAML.
 - Not self-merged: issue #31's definition of done wants real review before
-  merge, and the `vps-docker` verification run touches production.
+  merge, and the verification run touches a real production deployment.

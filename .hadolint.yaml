@@ -6,8 +6,8 @@
 #
 # The cost of disabling it here rather than inline is that a future `apk add`
 # gets the same pass without arguing for it. That has now happened once: the
-# image went from one package to six when it took over vps-docker's per-run
-# install. The reasoning above held — it is a property of Alpine, not of how
+# image went from one package to six when it took over a real deploy job's
+# per-run install. The reasoning above held — it is a property of Alpine, not of how
 # many packages are on the line — but it is the kind of thing that gets
 # stretched quietly. Read it again before reaching for a seventh, and if the
 # argument no longer fits, move the ignore inline on the line that needs it

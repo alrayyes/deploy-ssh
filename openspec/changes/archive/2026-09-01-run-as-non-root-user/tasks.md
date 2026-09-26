@@ -18,11 +18,11 @@
 
 ## 3. Cross-repo verification
 
-- [x] 3.1 Coordinate with the `vps-docker` session: confirm its deploy
+- [x] 3.1 Coordinate with the the consuming deployment's own session: confirm its deploy
       workflow has no hard dependency on root or `/root/.ssh` (confirmed -
       it already writes to `~/.ssh/...`, and flagged that `$HOME` has to
       be set explicitly for the new user)
-- [x] 3.2 `vps-docker` pushed the candidate (built from `fix/non-root-user`
+- [x] 3.2 the consuming deployment pushed the candidate (built from `fix/non-root-user`
       @ `a68da18`) as a temporary `ghcr.io/alrayyes/deploy-ssh:test-non-root`
       tag and ran it through a real `workflow_dispatch` against
       `deploy.yml`, pinned by digest. Confirmed clean: SSH connection
