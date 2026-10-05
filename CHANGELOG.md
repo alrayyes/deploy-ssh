@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.6](https://github.com/alrayyes/deploy-ssh/compare/1.3.5...1.3.6) (2026-10-05)
+
+
+### Bug Fixes
+
+* **deps:** clear bun audit for braces and fast-uri ([#77](https://github.com/alrayyes/deploy-ssh/issues/77)) ([20449a5](https://github.com/alrayyes/deploy-ssh/commit/20449a55e7be39f5d37b611c56be48c5c61801cf)), closes [#76](https://github.com/alrayyes/deploy-ssh/issues/76)
+
 ## [1.3.5](https://github.com/alrayyes/deploy-ssh/compare/1.3.4...1.3.5) (2026-09-28)
 
 
