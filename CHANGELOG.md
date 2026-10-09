@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.7](https://github.com/alrayyes/deploy-ssh/compare/1.3.6...1.3.7) (2026-10-09)
+
+
+### Bug Fixes
+
+* **deps:** override katex and smol-toml past their advisories ([#82](https://github.com/alrayyes/deploy-ssh/issues/82)) ([740af82](https://github.com/alrayyes/deploy-ssh/commit/740af82fc006abdbfa7db590d9a4ceb366d0c33e))
+
 ## [1.3.6](https://github.com/alrayyes/deploy-ssh/compare/1.3.5...1.3.6) (2026-10-05)
 
 
