@@ -42,14 +42,17 @@ style is advice. Mechanics fails the build; style reports and does not, because
 style advice that blocks a merge teaches people to skip the hooks.
 
 `bun run format`, `bun run lint:fix` and `bun run lint:pkg:fix` are the
-writing versions of `format:check`, `lint` and `lint:pkg`.
+writing versions of `format:check`, `lint` and `lint:pkg`. They take file
+arguments (`bun run format README.md`), which is how the hook calls them.
 
 The hooks run the same commands, which is the point — they cannot drift from CI
 if there is one copy of each:
 
-- **pre-commit** formats staged files with biome and Prettier and restages what
-  they touched, then runs markdownlint, and hadolint and a build if you touched
-  the `Dockerfile`. It may write.
+- **pre-commit** judges only what the commit contains: every job is handed the
+  staged files, so a half-finished file elsewhere can't fail or be rewritten by
+  a commit. It formats them with biome and Prettier and restages what they
+  touched, then runs markdownlint, and hadolint on a staged `Dockerfile` (read
+  from the index). It may write, and it never builds the image.
 - **commit-msg** runs commitlint.
 - **pre-push** runs everything in check mode over the whole tree, including the
   two prose tiers. It never writes: a hook rewriting files under a push leaves
