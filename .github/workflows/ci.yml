@@ -118,8 +118,9 @@ jobs:
         run: |
           docker run --rm deploy-ssh:ci sh -c '
             set -eu
-            for c in bash curl git node python3 ssh scp; do
+            for c in bash curl git hush-hush-cli node python3 ssh scp; do
               command -v "$c" >/dev/null || { echo "missing: $c"; exit 1; }
             done
+            hush-hush-cli --version >/dev/null
             ssh -G example.invalid | grep -qx "stricthostkeychecking accept-new"
           '
