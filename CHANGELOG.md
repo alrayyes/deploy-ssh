@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/alrayyes/deploy-ssh/compare/1.3.7...1.4.0) (2026-10-11)
+
+
+### Features
+
+* **image:** add curl for hush-hush-action ([#85](https://github.com/alrayyes/deploy-ssh/issues/85)) ([277c38c](https://github.com/alrayyes/deploy-ssh/commit/277c38cb813fc74652829fd8c1a6b34e2f8b7f6c))
+
 ## [1.3.7](https://github.com/alrayyes/deploy-ssh/compare/1.3.6...1.3.7) (2026-10-09)
 
 
