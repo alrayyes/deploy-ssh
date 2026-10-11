@@ -13,13 +13,19 @@ FROM alpine:3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4c
 #   nodejs                  actions/checkout *is* a node program whichever way it
 #                           then fetches. Without it the step never starts:
 #                           `exec: "node": executable file not found`, exit 127
-#   curl                    alrayyes/hush-hush-action downloads its CLI and checksums
+#   curl                    alrayyes/hush-hush-action downloads its command-line tool and checksums
 #                           with it. Missing, the secrets fetch fails before any
 #                           deploy step runs
 #   python3                 deploy.sh parses headscale's JSON with it to find the
 #                           tailnet IP. Missing, the lookup returns nothing and the
 #                           script dies pointing at headscale rather than at a
 #                           missing interpreter
+#
+#   hush-hush-cli           fetches secrets from hush-hush. Copied in from its own
+#                           minimal image rather than apk-installed, since it is
+#                           not an Alpine package. A static Go binary, so it needs
+#                           nothing else here. Without it a deploy job has to download
+#                           it on every run
 #
 # Deliberately unpinned. An apk version belongs to the Alpine branch this image is
 # built on, not to this file, and only the digest above gets bumped when the branch
@@ -42,6 +48,8 @@ RUN apk --no-cache add \
     mkdir -p /home/deploy/.ssh && \
     chown -R deploy:deploy /home/deploy/.ssh && \
     chmod 700 /home/deploy/.ssh
+
+COPY --from=ghcr.io/alrayyes/hush-hush-cli:1.22.1@sha256:76fea1b8b56e09967ba9e528a1d571091b09bcf62a971456f7b97f52bafab810 /hush-hush-cli /usr/local/bin/hush-hush-cli
 
 COPY --chown=deploy:deploy config /home/deploy/.ssh/config
 
