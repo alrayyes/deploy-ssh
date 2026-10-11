@@ -1,3 +1,8 @@
+# A named stage rather than COPY --from=<image>: Dependabot's Docker updater reads FROM
+# lines and nothing else, so this is what lets it raise a pull request for a new
+# hush-hush-cli release. It is only a source for the COPY below, never the final image.
+FROM ghcr.io/alrayyes/hush-hush-cli:1.22.1@sha256:76fea1b8b56e09967ba9e528a1d571091b09bcf62a971456f7b97f52bafab810 AS hush-hush-cli
+
 FROM alpine:3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
 
 # What a deploy job needs, in the image rather than installed on every run.
@@ -49,7 +54,7 @@ RUN apk --no-cache add \
     chown -R deploy:deploy /home/deploy/.ssh && \
     chmod 700 /home/deploy/.ssh
 
-COPY --from=ghcr.io/alrayyes/hush-hush-cli:1.22.1@sha256:76fea1b8b56e09967ba9e528a1d571091b09bcf62a971456f7b97f52bafab810 /hush-hush-cli /usr/local/bin/hush-hush-cli
+COPY --from=hush-hush-cli /hush-hush-cli /usr/local/bin/hush-hush-cli
 
 COPY --chown=deploy:deploy config /home/deploy/.ssh/config
 
