@@ -2,9 +2,9 @@ FROM alpine:3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4c
 
 # What a deploy job needs, in the image rather than installed on every run.
 #
-# The six below are exactly what a real deploy job used to `apk add` into a
+# The first six below are exactly what a real deploy job used to `apk add` into a
 # bare alpine on every deploy, and each one is here for a reason that bites when it
-# is missing:
+# is missing. curl joined later:
 #
 #   openssh-client-default  ssh and scp - the thing this image is named after
 #   bash                    deploy.sh is bash and uses arrays
@@ -13,6 +13,9 @@ FROM alpine:3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4c
 #   nodejs                  actions/checkout *is* a node program whichever way it
 #                           then fetches. Without it the step never starts:
 #                           `exec: "node": executable file not found`, exit 127
+#   curl                    alrayyes/hush-hush-action downloads its CLI and checksums
+#                           with it. Missing, the secrets fetch fails before any
+#                           deploy step runs
 #   python3                 deploy.sh parses headscale's JSON with it to find the
 #                           tailnet IP. Missing, the lookup returns nothing and the
 #                           script dies pointing at headscale rather than at a
@@ -29,6 +32,7 @@ FROM alpine:3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4c
 RUN apk --no-cache add \
         bash \
         ca-certificates \
+        curl \
         git \
         nodejs \
         openssh-client-default \

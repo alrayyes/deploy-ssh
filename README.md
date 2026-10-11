@@ -13,7 +13,7 @@ ghcr.io/alrayyes/deploy-ssh:latest
 ```
 
 It exists because the alternative is running `apk add` at the top of every
-deploy: six packages, fetched from the Alpine mirrors, every time anything
+deploy: seven packages, fetched from the Alpine mirrors, every time anything
 ships. That is a minute of somebody's pipeline and a dependency on a mirror
 being up, paid over and over for an answer that never changes.
 
@@ -32,6 +32,7 @@ The image is `linux/amd64` only.
 | `bash`                   | deploy scripts that use arrays need a real bash, not Alpine's `ash`                                                                                      |
 | `git`, `ca-certificates` | so `actions/checkout` clones over HTTPS with the system CA store instead of pulling a tarball through node                                               |
 | `nodejs`                 | `actions/checkout` **is** a node program whichever way it fetches. Without it the step never starts: `exec: "node": executable file not found`, exit 127 |
+| `curl`                   | `alrayyes/hush-hush-action` downloads its CLI and checksums with it; without `curl` the secrets fetch fails before any deploy step runs                  |
 | `python3`                | for the deploy script that parses JSON on its way to finding a host                                                                                      |
 
 That is the whole image. It has no entrypoint of its own and runs nothing — it is
