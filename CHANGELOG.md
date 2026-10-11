@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/alrayyes/deploy-ssh/compare/1.4.0...1.5.0) (2026-10-11)
+
+
+### Features
+
+* **image:** add hush-hush-cli ([#88](https://github.com/alrayyes/deploy-ssh/issues/88)) ([8dd0ee2](https://github.com/alrayyes/deploy-ssh/commit/8dd0ee2ce3233843179d35f205bedfefad28fb40))
+
 ## [1.4.0](https://github.com/alrayyes/deploy-ssh/compare/1.3.7...1.4.0) (2026-10-11)
 
 
