@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/alrayyes/deploy-ssh/compare/1.5.1...1.5.2) (2026-10-15)
+
+
+### Bug Fixes
+
+* **ci:** run release-auto-merge when the autorelease label is added ([#97](https://github.com/alrayyes/deploy-ssh/issues/97)) ([30cd08e](https://github.com/alrayyes/deploy-ssh/commit/30cd08e088807c2b3a69d5e9b3b905979f1d94d2))
+
 ## [1.5.1](https://github.com/alrayyes/deploy-ssh/compare/1.5.0...1.5.1) (2026-10-12)
 
 
