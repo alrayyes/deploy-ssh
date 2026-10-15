@@ -16,7 +16,8 @@ a scan of the default branch that keeps one ticket (#95).
   branch, daily, on a manifest or lockfile push and on demand, and keeps one
   open `Dependency advisories` issue.
 - The GHSA-vfj7 ignore is gone from `package.json` and `CONTRIBUTING.md`.
-  `bun run audit` and the `pre-push` hook now report everything.
+  `bun run audit` stays for on-demand use and now reports everything; it is no
+  longer a `pre-push` hook.
 
 ## Capabilities
 
@@ -29,5 +30,5 @@ a scan of the default branch that keeps one ticket (#95).
 
 - `.github/workflows/ci.yml`, `.github/workflows/advisory-scan.yml`,
   `package.json`, `CONTRIBUTING.md`.
-- Until braces publishes a fix, `bun run audit` exits non-zero locally and the
-  `pre-push` hook with it. CI doesn't, since the gate compares against the base.
+- Until braces publishes a fix, `bun run audit` exits non-zero locally. Nothing
+  runs it automatically; CI's gate compares against the base.
