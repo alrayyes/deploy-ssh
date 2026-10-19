@@ -1,7 +1,7 @@
 # A named stage rather than COPY --from=<image>: Dependabot's Docker updater reads FROM
 # lines and nothing else, so this is what lets it raise a pull request for a new
 # hush-hush-cli release. It is only a source for the COPY below, never the final image.
-FROM ghcr.io/alrayyes/hush-hush-cli:1.23.0@sha256:5a8a0d298cd1b6048e6aa49e9b0c447cae75a1af178b5aca5acc4d14a534c5c4 AS hush-hush-cli
+FROM ghcr.io/alrayyes/hush-hush-cli:1.24.1@sha256:75efdde1e04f98638af82402450f7bfbe62c018e1e4829be19b31099a4ba2c26 AS hush-hush-cli
 
 FROM alpine:3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
 
