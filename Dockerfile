@@ -3,7 +3,7 @@
 # hush-hush-cli release. It is only a source for the COPY below, never the final image.
 FROM ghcr.io/alrayyes/hush-hush-cli:1.24.1@sha256:75efdde1e04f98638af82402450f7bfbe62c018e1e4829be19b31099a4ba2c26 AS hush-hush-cli
 
-FROM alpine:3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
+FROM alpine:3.24.3@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
 
 # What a deploy job needs, in the image rather than installed on every run.
 #
