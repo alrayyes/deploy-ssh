@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.4](https://github.com/alrayyes/deploy-ssh/compare/1.5.3...1.5.4) (2026-10-26)
+
+
+### Bug Fixes
+
+* **deps:** bump alpine from 3.24.2 to 3.24.3 ([#107](https://github.com/alrayyes/deploy-ssh/issues/107)) ([9e3479b](https://github.com/alrayyes/deploy-ssh/commit/9e3479b48f6d4658ce5e41b16a56557b1af8313f))
+
 ## [1.5.3](https://github.com/alrayyes/deploy-ssh/compare/1.5.2...1.5.3) (2026-10-19)
 
 
