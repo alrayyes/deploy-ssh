@@ -5,6 +5,8 @@
 - **bun** `1.3.14`, pinned in `.bun-version`. It installs the dev dependencies
   and runs the hooks; there is no node in this repo any more.
 - **Docker**, to build the image and to run hadolint.
+- [gitleaks](https://github.com/gitleaks/gitleaks) on your `PATH`. The hooks
+  run it, and the `gitleaks` workflow runs it in CI.
 
 That is the whole toolchain. Everything else arrives through `bun install`.
 
@@ -56,17 +58,26 @@ if there is one copy of each:
   staged files, so a half-finished file elsewhere can't fail or be rewritten by
   a commit. It formats them with biome and Prettier and restages what they
   touched, then runs markdownlint, and hadolint on a staged `Dockerfile` (read
-  from the index). It may write, and it never builds the image.
+  from the index). It also scans the staged changes for secrets with gitleaks.
+  It may write, and it never builds the image.
 - **commit-msg** runs commitlint.
 - **pre-push** runs everything in check mode over the whole tree, including the
-  two prose tiers. It never writes: a hook rewriting files under a push leaves
-  the pushed commit and your working tree disagreeing about what was reviewed.
+  two prose tiers, and scans the whole history with gitleaks. It never writes:
+  a hook rewriting files under a push leaves the pushed commit and your working
+  tree disagreeing about what was reviewed.
 
 The first `bun run lint:mechanics` downloads ltex-ls-plus, which is about
 300 MB because it ships its own JVM. It caches outside the repository under
 `$XDG_CACHE_HOME`, so that is once per machine and a few seconds thereafter.
 Vale fetches its style packages into `styles/` on first run; both of those
 directories are gitignored.
+
+The `gitleaks` workflow scans the full history on every pull request and push
+to `main`, and is never path-filtered, because a secret can land in any file.
+It builds the pinned image from `.github/gitleaks/Dockerfile`, so a bump is one
+line there. `.gitleaks.toml` extends gitleaks's default rules, so new upstream
+rules arrive with the version bump. If a scan finds something, treat it as a
+leaked credential: revoke and rotate it before you rewrite any history.
 
 CI adds one check the hooks cannot: it runs the built image and asserts that
 `bash`, `git`, `node`, `python3`, `ssh` and `scp` all resolve and that `ssh -G`

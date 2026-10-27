@@ -17,6 +17,7 @@
 			"commitlint",
 			"entrypoint",
 			"ghcr",
+			"gitleaks",
 			"gitignored",
 			"hadolint",
 			"lefthook",
