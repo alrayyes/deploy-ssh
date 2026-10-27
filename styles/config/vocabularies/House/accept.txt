@@ -18,6 +18,7 @@ bun
 bunx
 busybox
 commitlint
+gitleaks
 hadolint
 lefthook
 markdownlint
