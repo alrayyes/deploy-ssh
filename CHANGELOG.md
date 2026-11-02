@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.6](https://github.com/alrayyes/deploy-ssh/compare/1.5.5...1.5.6) (2026-11-02)
+
+
+### Bug Fixes
+
+* **lint:** point biome $schema at the installed package ([#118](https://github.com/alrayyes/deploy-ssh/issues/118)) ([e674143](https://github.com/alrayyes/deploy-ssh/commit/e674143e8405c963e2d73e0e96e9d6b3abb3e58c))
+
 ## [1.5.5](https://github.com/alrayyes/deploy-ssh/compare/1.5.4...1.5.5) (2026-10-27)
 
 
