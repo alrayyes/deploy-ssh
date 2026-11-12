@@ -68,6 +68,9 @@ if there is one copy of each:
 The first `bun run lint:mechanics` downloads ltex-ls-plus, which is about
 300 MB because it ships its own JVM. It caches outside the repository under
 `$XDG_CACHE_HOME`, so that is once per machine and a few seconds thereafter.
+The pre-push hook runs it only on the Markdown in your push, and on all of it
+when `.ltex.json` or `scripts/lint-mechanics.sh` changed. CI, and
+`bun run lint:mechanics` by hand, check every document.
 Vale fetches its style packages into `styles/` on first run; both of those
 directories are gitignored.
 
