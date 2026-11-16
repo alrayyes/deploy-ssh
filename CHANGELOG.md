@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.8](https://github.com/alrayyes/deploy-ssh/compare/1.5.7...1.5.8) (2026-11-16)
+
+
+### Bug Fixes
+
+* **deps:** bump alpine from 3.24.3 to 3.24.4 ([#126](https://github.com/alrayyes/deploy-ssh/issues/126)) ([dfa18e8](https://github.com/alrayyes/deploy-ssh/commit/dfa18e886bbb77a5dfb6dd70fee49b1252ec4782))
+* **deps:** bump alrayyes/hush-hush-cli from 1.24.7 to 1.24.10 ([#127](https://github.com/alrayyes/deploy-ssh/issues/127)) ([d8c37ec](https://github.com/alrayyes/deploy-ssh/commit/d8c37ec546390b64d674067f3f1866446d9530c4))
+
 ## [1.5.7](https://github.com/alrayyes/deploy-ssh/compare/1.5.6...1.5.7) (2026-11-09)
 
 
