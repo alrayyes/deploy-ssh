@@ -109,7 +109,7 @@ Two things there are load-bearing, and both have their reasoning written beside
 them:
 
 - **Alpine package versions are deliberately unpinned**, and hadolint's DL3018
-  is disabled in `.hadolint.yaml` to allow it. An apk version belongs to the
+  is turned off in `.hadolint.yaml` to allow it. An apk version belongs to the
   Alpine branch the base image is built on rather than to this file, and Alpine
   keeps one build per branch and prunes the rest — so there is no version list
   to read and no archive to pin against. Read that file in full before adding
