@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.9](https://github.com/alrayyes/deploy-ssh/compare/1.5.8...1.5.9) (2026-11-23)
+
+
+### Bug Fixes
+
+* **deps:** bump alrayyes/hush-hush-cli from 1.24.10 to 1.24.14 ([#132](https://github.com/alrayyes/deploy-ssh/issues/132)) ([e7486ec](https://github.com/alrayyes/deploy-ssh/commit/e7486ecb1d4497eb97828c9bdd17df8621d667f3))
+
 ## [1.5.8](https://github.com/alrayyes/deploy-ssh/compare/1.5.7...1.5.8) (2026-11-16)
 
 
