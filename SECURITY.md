@@ -4,7 +4,7 @@
 
 Please report it privately, through
 [GitHub's private vulnerability reporting](https://github.com/alrayyes/deploy-ssh/security/advisories/new)
-— the Security tab of this repository, "Report a vulnerability". That opens a
+— the Security tab of this repository, “Report a vulnerability”. That opens a
 draft advisory only you and the maintainers can see.
 
 Not a public issue, please. This image is the container other people's deploy
@@ -14,14 +14,14 @@ exploit posted in the open is a working exploit against every pipeline using it.
 Tell me what you did, what happened, and what you expected. A `Dockerfile` or a
 workflow that reproduces it is worth more than a description of one.
 
-I will acknowledge within a week and tell you what I think, whether or not I
+I’ll acknowledge within a week and tell you what I think, whether or not I
 agree it is a vulnerability. If it is one, the fix ships as a `fix:` commit and
 the advisory is published with the release that carries it.
 
 ## Supported versions
 
 The latest release, and only the latest. Every fix cuts a new tag and a new
-image, so "upgrade" is the patch. Pinned digests do not update themselves —
+image, so “upgrade” is the patch. Pinned digests do not update themselves —
 that is what pinning means — so a pin is a decision to stay on that image until
 something moves it.
 
